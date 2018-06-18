@@ -34,6 +34,7 @@ export class Header extends Component {
                     {
                       !isAuthenticated() && (
                         <div className="navbar-item">
+                            <Link to="/login"/>
                             <a href='/login' className="button is-info" onClick={this.handleLoginn}>Sign in</a>
                         </div>
                       )

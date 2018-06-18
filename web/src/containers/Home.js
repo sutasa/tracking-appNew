@@ -26,7 +26,7 @@ class Home extends Component {
                                 <div className="is-one-fifth">
                                 <br></br>
                                 <br></br>
-                                    <ObjectInfo onFilter={this.onFilter} />
+                                    <ObjectInfo/>
                                 </div>
                                 </div>
                                 <div className="column">

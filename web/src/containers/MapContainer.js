@@ -28,7 +28,7 @@ class MapContainer extends Component {
         this.state.locations.find((imei) => {
             if (imei.IMEI === this.state.imei) {
                 console.log(imei.geometry.coordinates[1], imei.geometry.coordinates[0])
-                this.setState(
+                this.map.setCenter(
                     {
                         lat: imei.geometry.coordinates[1],
                         lng: imei.geometry.coordinates[0]

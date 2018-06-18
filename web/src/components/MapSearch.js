@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
+import ObjectInfo from '../components/ObjectInfo'
 import MapContainer from '../containers/MapContainer'
 
 export default class MapSearch extends Component {
@@ -53,7 +54,8 @@ export default class MapSearch extends Component {
                                 <li key={i}>
                                     <a>
                                         {item.name}
-                                        {/* <MapContainer imei={item.IMEI}/> */}
+                                            <MapContainer imei={item.IMEI}/>
+                                            <ObjectInfo imei={item.IMEI}/>
                                     </a>
                                 </li>
                             </div>

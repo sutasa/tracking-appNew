@@ -15,7 +15,7 @@ export class Header extends Component {
         <nav className="navbar is-fixed-top is-transparent" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
-                <a className="navbar-item" href={isAuthenticated()? "/home" : "/"}>PIKACHU</a>
+                <a className="navbar-item" href={isAuthenticated()? "/home" : "/"}>TRACKING</a>
                 <div className="navbar-burger">
                   <span></span>
                   <span></span>
@@ -25,7 +25,6 @@ export class Header extends Component {
             <div className="navbar-menu">
                 <div className="navbar-start">
                   <Link to="/home" className="navbar-item">Home</Link>
-                  <Link to="/about" className="navbar-item">About</Link>
                 </div>
                 <div className="navbar-end">
                   <div className="navbar-item">

@@ -1,0 +1,54 @@
+{
+  "objects":[{
+    "createdAt": {"$date":"2018-06-04T20:00:30Z"},
+    "name": "3xs-3216",
+    "IMEI": "1000000"
+},
+{
+    "createdAt": {"$date":"2018-06-04T20:00:30Z"},
+    "name": "3xs-3217",
+    "IMEI": "1000001"
+}],
+  "data": [
+    {
+      "geometry": {
+          "type": "Point",
+          "coordinates": [
+              100.4340369,
+              13.6416148
+          ]
+      },
+      "ts": {"$date":"2018-06-04T20:00:30Z"},
+      "speed": "62",
+      "IMEI": "1000000"
+  },
+  {
+      "geometry": {
+          "type": "Point",
+          "coordinates": [
+              100.4540369,
+              13.6516148
+          ]
+      },
+      "ts": {"$date":"2018-06-04T20:00:30Z"},
+      "speed": "61",
+      "IMEI": "1000001"
+  }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "A",
+      "password": "1234",
+      "email": "A@mail.com",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "name": "B",
+      "password": "1234",
+      "email": "B@mail.com",
+      "role": "user"
+    }
+  ]
+}

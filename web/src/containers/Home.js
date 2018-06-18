@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { GoogleApiWrapper } from 'google-maps-react'
 import MapContainer from './MapContainer'
 import Search from '../components/MapSearch'
+import ObjectInfo from '../components/ObjectInfo'
 
 import controllable from 'react-controllables';
 
@@ -22,6 +23,11 @@ class Home extends Component {
                             <div className="columns">
                                 <div className="is-one-fifth">
                                     <Search onFilter={this.onFilter} />
+                                <div className="is-one-fifth">
+                                <br></br>
+                                <br></br>
+                                    <ObjectInfo onFilter={this.onFilter} />
+                                </div>
                                 </div>
                                 <div className="column">
                                     <MapContainer google={this.props.google} />

@@ -5,6 +5,17 @@ import Search from '../components/MapSearch'
 
 class Home extends Component {
     render() {
+        const style = {
+            width: '100%',
+            height: "100%",
+            "border-style" : "solid",
+            "border-width": "2px",
+            "border-color": "hsl(171, 100%, 41%)",
+            "margin-top" : "-1%",
+            "margin-right" : "-1%",
+            "margin-bottom" : "-1%",
+            "margin-left" : "-1%"
+        }
         const { isAuthenticated } = this.props.auth
         return (
             <div>
@@ -14,17 +25,15 @@ class Home extends Component {
                     )
                 }
                 {
-                    isAuthenticated() && (
-                        <div>
-                            <div className="columns">
-                                <div className="is-one-fifth">
-                                    <Search onFilter={this.onFilter} />
-                                </div>
-                                <div className="column">
-                                    <MapContainer google={this.props.google} />
-                                </div>
+                    isAuthenticated() && (                
+                        <div className="columns" style={style}>
+                            <div >
+                                <Search onFilter={this.onFilter} />
                             </div>
-                        </div>
+                            <div className="column">
+                                <MapContainer google={this.props.google} />
+                            </div>
+                        </div>                        
                     )
                 }
 

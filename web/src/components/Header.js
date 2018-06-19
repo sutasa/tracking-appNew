@@ -12,10 +12,10 @@ export class Header extends Component {
   render() {
     const { isAuthenticated } = this.props.auth
     return (
-        <nav className="navbar is-fixed-top is-transparent" aria-label="main navigation">
+        <nav className="navbar is-fixed-top is-transparent is-primary" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
-                <a className="navbar-item" href={isAuthenticated()? "/home" : "/"}>TRACKING</a>
+                <a className="navbar-item" href={isAuthenticated()? "/home" : "/"}><strong>TRACKING</strong></a>
                 <div className="navbar-burger">
                   <span></span>
                   <span></span>
@@ -34,14 +34,14 @@ export class Header extends Component {
                       !isAuthenticated() && (
                         <div className="navbar-item">
                             <Link to="/login"/>
-                            <a href='/login' className="button is-info" onClick={this.handleLoginn}>Sign in</a>
+                            <a href='/login' className="button is-small is-info" onClick={this.handleLoginn}>Sign in</a>
                         </div>
                       )
                     }
                     {
                       isAuthenticated() && (
                         <div className="navbar-item">
-                           <a className="button is-danger" onClick={this.handleLogout.bind(this)}>Sign out</a> 
+                           <a className="button is-small is-danger" onClick={this.handleLogout.bind(this)}>Sign out</a> 
                         </div>  
                       )
                     }

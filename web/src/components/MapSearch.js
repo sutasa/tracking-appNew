@@ -47,11 +47,12 @@ export default class MapSearch extends Component {
     }
     render() {
         const style = {
-            width: '100%',
+            width: "100%",
             height: "300px",
             "overflow-y": "scroll",
             "border-style" : "solid",
-            "border-width": "1px"
+            "border-width": "1px",
+            "border-color": "hsl(171, 100%, 41%)"
         }
 
         let listItems = this.state.name.filter(
@@ -61,39 +62,41 @@ export default class MapSearch extends Component {
         )
 
         return (
-            
-            <div className="filter-list table is-striped" >
+        <div className="column">
+            <div className="filter-list" >
                 <ul>
-                    <h1>Tracking app</h1><br/>
-                    <input value={this.state.items} className="input is-expanded is-primary" type="text" onChange={this.filterList.bind(this)} />
+                    <input value={this.state.items} className="input is-expanded is-primary" type="text" onChange={this.filterList.bind(this)} 
+                        placeholder="search...."/>
                     <br/>
                 </ul>
                 <ul>
                     <br/>
-                    <div style={style} >
-                    {listItems.map((item, i) => {
-                        return (
-                            <div class="control" key={i}>
-                                <tr>
-                                    
-                                    <a onClick={() => this.sendData(item.name,item.speed,item.IMEI)}>
-                                        <td>name:</td>
-                                        <td>{item.name}</td>
-                                        <td>speed</td>
-                                        <td>{item.speed}</td>
-                                    </a>
-                                    
-                                </tr>
-                            </div>
-                        )
-                    })}
+                    <div class="control">
+                        <div style={style} >
+                            <table className="table is-fullwidth">
+                                <tbody>
+                                    {listItems.map((item, i) => {
+                                        return (
+                                            <tr >                                                
+                                                <a key={i} onClick={() => this.sendData(item.name,item.speed,item.IMEI)}>
+                                                    {/* <td>name:</td> */}
+                                                    <td>{item.name}</td>
+                                                    <td>speed</td>
+                                                    <td>{item.speed}</td>
+                                                    <td></td>
+                                                </a>                                                
+                                            </tr>                           
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <br></br>
                     <br/>
                     <ObjectInfo name={this.state.dname} imei={this.state.imei} speed={this.state.dspeed}/>
                 </ul> 
             </div>
-            
+        </div>   
         )
     }
 }

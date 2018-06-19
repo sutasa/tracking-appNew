@@ -49,7 +49,9 @@ export default class MapSearch extends Component {
         const style = {
             width: '100%',
             height: "300px",
-            "overflow-y": "scroll"
+            "overflow-y": "scroll",
+            "border-style" : "solid",
+            "border-width": "1px"
         }
 
         let listItems = this.state.name.filter(
@@ -59,25 +61,28 @@ export default class MapSearch extends Component {
         )
 
         return (
+            
             <div className="filter-list table is-striped" >
                 <ul>
                     <h1>Tracking app</h1><br/>
-                    <input value={this.state.items} className="input is-expanded" type="text" onChange={this.filterList.bind(this)} />
+                    <input value={this.state.items} className="input is-expanded is-primary" type="text" onChange={this.filterList.bind(this)} />
                     <br/>
                 </ul>
                 <ul>
                     <br/>
-                    <div style={style}>
+                    <div style={style} >
                     {listItems.map((item, i) => {
                         return (
                             <div class="control" key={i}>
                                 <tr>
-                                    <td>name:</td>
+                                    
                                     <a onClick={() => this.sendData(item.name,item.speed,item.IMEI)}>
+                                        <td>name:</td>
                                         <td>{item.name}</td>
+                                        <td>speed</td>
+                                        <td>{item.speed}</td>
                                     </a>
-                                    <td>speed</td>
-                                    <td>{item.speed}</td>
+                                    
                                 </tr>
                             </div>
                         )
@@ -88,6 +93,7 @@ export default class MapSearch extends Component {
                     <ObjectInfo name={this.state.dname} imei={this.state.imei} speed={this.state.dspeed}/>
                 </ul> 
             </div>
+            
         )
     }
 }

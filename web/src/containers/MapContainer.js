@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+import google from 'google-maps-react'
 
 class MapContainer extends Component {
 
@@ -28,13 +29,15 @@ class MapContainer extends Component {
         this.state.locations.find((imei) => {
             if (imei.IMEI === this.state.imei) {
                 console.log(imei.geometry.coordinates[1], imei.geometry.coordinates[0])
-                this.map.setCenter(
-                    {
-                        lat: imei.geometry.coordinates[1],
-                        lng: imei.geometry.coordinates[0]
-                    }, console.log('lag lng', this.state.lat,this.state.lng)
-                )
-                this.loadMap(this.state.lat,this.state.lng)
+
+                // var center = new google.maps.LatLng(imei.geometry.coordinates[1],imei.geometry.coordinates[0])
+                // this.map.penTo(center)
+                // this.map.setCenter(
+                //     {
+                //         lat: imei.geometry.coordinates[1],
+                //         lng: imei.geometry.coordinates[0]
+                //     }, console.log('lag lng', this.state.lat,this.state.lng)
+                // )
             }
         })
     }
@@ -50,7 +53,7 @@ class MapContainer extends Component {
             const mapRef = this.refs.map;
             const node = ReactDOM.findDOMNode(mapRef);
             const mapConfig = Object.assign({}, {
-                center: new google.maps.LatLng(this.state.lat,this.state.lng), //{ lat: this.state.lat, lng: this.state.lng },//
+                center: { lat: 13.736717, lng: 100.523186 }, //{ lat: this.state.lat, lng: this.state.lng },//
                 zoom: 11,
                 mapTypeId: 'roadmap'
             })
@@ -83,8 +86,7 @@ class MapContainer extends Component {
 
         return (
             <div ref="map" style={style}>
-                {/* {this.props.imei} 
-                <button onClick={this.changeCenter}>button</button> */}
+                Loading.....
             </div>
         )
     }

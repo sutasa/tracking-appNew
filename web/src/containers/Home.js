@@ -24,9 +24,6 @@ class Home extends Component {
                                 <div className="is-one-fifth">
                                     <Search onFilter={this.onFilter} />
                                 <div className="is-one-fifth">
-                                <br></br>
-                                <br></br>
-                                    <ObjectInfo/>
                                 </div>
                                 </div>
                                 <div className="column">

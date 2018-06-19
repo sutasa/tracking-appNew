@@ -1,14 +1,26 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 
 export default class ObjectInfo extends Component {
     render() {
         return (
-            <div class="field">
+            <div class="field" >
                 <div class="control">
-                    <textarea class="textarea is-warning" type="text" placeholder="Warning textarea">
-                        {this.props.imei}
-                    </textarea>
+                    <table className="table is-fullwidth">
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>{this.props.name}</td> 
+                            </tr>
+                            <tr>    
+                                <td>IMEI</td>
+                                <td>{this.props.imei} </td> 
+                            </tr>
+                            <tr>    
+                                <td>speed</td>
+                                <td>{this.props.speed} </td> 
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

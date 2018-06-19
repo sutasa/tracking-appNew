@@ -7,7 +7,6 @@ class Login extends Component {
         super(props)
         this.handlechange = this.handlechange.bind(this)
         this.handlesubmit = this.handlesubmit.bind(this)
-        this.handlesubmitlogin = this.handlesubmitlogin.bind(this)
         this.Auth = new AuthService()
     }
 
@@ -28,10 +27,6 @@ class Login extends Component {
         } catch (error) {
             alert("Please Input email and password")
         }  
-    }
-
-    handlesubmitlogin(){
-        this.Auth.handlesubmitlogin()
     }
 
     componentWillMount(){ 

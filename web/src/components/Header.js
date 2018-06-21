@@ -10,12 +10,15 @@ export class Header extends Component {
   }
 
   render() {
+    const style = {
+      "color" : "#00aeef"
+    }
     const { isAuthenticated } = this.props.auth
     return (
-        <nav className="navbar is-fixed-top is-transparent is-primary" aria-label="main navigation">
+        <nav className="navbar is-fixed-top is-light" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
-                <a className="navbar-item" href={isAuthenticated()? "/home" : "/"}><strong>TRACKING</strong></a>
+                <a className="navbar-item" style={style} href={isAuthenticated()? "/home" : "/"}><strong>TRACKING</strong></a>
                 <div className="navbar-burger">
                   <span></span>
                   <span></span>
@@ -26,31 +29,24 @@ export class Header extends Component {
                 <div className="navbar-start">
                   <Link to="/home" className="navbar-item">Home</Link>
                 </div>
-                <div className="navbar-end">
-                  <div className="navbar-item">
-                    <p className="control">
-                    <div>
+                <div className="navbar-end">                    
                     {
                       !isAuthenticated() && (
                         <div className="navbar-item">
-                            <Link to="/login"/>
-                            <a href='/login' className="button is-small is-info" onClick={this.handleLoginn}>Sign in</a>
+                            <a href='/login' className="button is-info" onClick={this.handleLoginn}>Sign in</a>
                         </div>
                       )
                     }
                     {
                       isAuthenticated() && (
                         <div className="navbar-item">
-                           <a className="button is-small is-danger" onClick={this.handleLogout.bind(this)}>Sign out</a> 
+                           <a className="button is-danger" onClick={this.handleLogout.bind(this)}>Sign out</a> 
                         </div>  
                       )
                     }
-                    </div>
-                    </p>
                   </div>
                 </div>
             </div>
-          </div>
         </nav>
     )
   }

@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-
 import ObjectInfo from '../components/ObjectInfo'
 import MapContainer from '../containers/MapContainer'
 
-export default class MapSearch extends Component {
-
+class MapSearch extends Component {
     constructor(props) {
-        super()
+        super(props)
         this.state = {
             name: [],
             items: "",
             IMEI: [],
             speed:[],
-            createdAt:[],
             dname : props.dname,
             imei : props.imei,
             dspeed : props.dspeed        
@@ -22,13 +18,11 @@ export default class MapSearch extends Component {
     }
 
     componentDidMount() {
-
         fetch('http://localhost:5000/api/v1/objects')
             .then((response) => response.json())
             .then(json => {
                 this.setState({ name: json })
                 this.setState({ IMEI: json })
-                this.setState({ createdAt: json})
                 this.setState({ speed: json})
             });
     }
@@ -37,24 +31,21 @@ export default class MapSearch extends Component {
         this.setState({ items: e.target.value })
     }
 
-    sendData(name,speed,imei){
+    sendData = (name,speed,imei) => {
         this.setState({
             dname : name,
             imei : imei,
             dspeed : speed
-        })
-        
+        });   
     }
+
     render() {
         const style = {
             width: "100%",
-            height: "300px",
-            "overflow-y": "scroll",
-            "border-style" : "solid",
-            "border-width": "1px",
-            "border-color": "hsl(171, 100%, 41%)"
-        }
-
+            height: "250px",
+            "overflowY": "scroll"
+        }       
+        
         let listItems = this.state.name.filter(
             (item) => {
                 return item.name.toString().toLowerCase().indexOf(this.state.items.toLowerCase()) !== -1
@@ -62,41 +53,50 @@ export default class MapSearch extends Component {
         )
 
         return (
-        <div className="column">
-            <div className="filter-list" >
+            <div className="column">
                 <ul>
-                    <input value={this.state.items} className="input is-expanded is-primary" type="text" onChange={this.filterList.bind(this)} 
-                        placeholder="search...."/>
-                    <br/>
+                    <p className="control has-icons-left">
+                        <input value={this.state.items} className="input is-expanded is-info" type="text" onChange={this.filterList.bind(this)} 
+                            placeholder="Search...."/>
+                        <span className="icon is-small is-left">
+                            <i className="fas fa-search"></i>
+                        </span>
+                    </p>
                 </ul>
                 <ul>
                     <br/>
-                    <div class="control">
+                    <div className="control">
                         <div style={style} >
                             <table className="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>name</th>
+                                        <th>speed</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {listItems.map((item, i) => {
                                         return (
-                                            <tr >                                                
-                                                <a key={i} onClick={() => this.sendData(item.name,item.speed,item.IMEI)}>
-                                                    {/* <td>name:</td> */}
-                                                    <td>{item.name}</td>
-                                                    <td>speed</td>
-                                                    <td>{item.speed}</td>
-                                                    <td></td>
-                                                </a>                                                
-                                            </tr>                           
+                                            <tr key={i}>
+                                                <td><a onClick={() => this.sendData(item.name,item.speed,item.IMEI)}>{item.name}</a> </td>
+                                                <td>{item.speed}</td>                                                                                              
+                                            </tr>                                                                       
                                         )
                                     })}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <br/>
-                    <ObjectInfo name={this.state.dname} imei={this.state.imei} speed={this.state.dspeed}/>
                 </ul> 
-            </div>
-        </div>   
+                <MapContainer imei={this.state.imei} />
+                <ObjectInfo name={this.state.dname} imei={this.state.imei} speed={this.state.dspeed}  />
+            </div>   
         )
     }
 }
+MapSearch.defaultProps = {
+    dname : null,
+    imei : null,
+    dspeed : null   
+};
+export default MapSearch

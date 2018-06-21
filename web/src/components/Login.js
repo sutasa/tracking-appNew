@@ -37,40 +37,40 @@ class Login extends Component {
 
     render(){
         return(
-        <div class="columns">
-            <div class="column is-two-fifths is-offset-one-quarter">
-                <div class="tile is-ancestor">
-                    <div class="tile is-vertical is-12">
-                        <div class="tile">
-                            <div class="tile is-parent is-vertical">
-                                <div class="box">
-                                    <p class="title">Sign In</p>
-                                        <div class="field">
-                                            <label class="label">Email:</label>
-                                            <p class="control has-icons-left has-icons-right">
+        <div className="columns">
+            <div className="column is-two-fifths is-offset-one-quarter">
+                <div className="tile is-ancestor">
+                    <div className="tile is-vertical is-12">
+                        <div className="tile">
+                            <div className="tile is-parent is-vertical">
+                                <div className="box">
+                                    <p className="title">Sign In</p>
+                                        <div className="field">
+                                            <label className="label">Email:</label>
+                                            <p className="control has-icons-left has-icons-right">
                                                 <input name="email" type="email" class="input is-info" 
                                                     placeholder="youremail@email.com" onChange={this.handlechange} />
-                                                <span class="icon is-small is-left">
-                                                    <i class="fas fa-envelope"></i>
+                                                <span className="icon is-small is-left">
+                                                    <i className="fas fa-envelope"></i>
                                                 </span>
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-check"></i>
+                                                <span className="icon is-small is-right">
+                                                    <i className="fas fa-check"></i>
                                                 </span>
                                             </p>
                                         </div>
-                                        <div class="field">
-                                            <label class="label">Password:</label>
+                                        <div className="field">
+                                            <label className="label">Password:</label>
                                             <p class="control has-icons-left">
                                                 <input name="password" type="password" class="input is-info" 
                                                     placeholder="Password" onChange={this.handlechange}/> 
-                                                <span class="icon is-small is-left">
-                                                    <i class="fas fa-lock"></i>
+                                                <span className="icon is-small is-left">
+                                                    <i className="fas fa-lock"></i>
                                                 </span>
                                             </p>
                                         </div> 
-                                        <div class="field">
-                                            <p class="control">
-                                                <p class="level-item has-text-centered level-right">
+                                        <div className="field">
+                                            <p className="control">
+                                                <p className="level-item has-text-centered level-right">
                                                     <br/><br/>
                                                     <a type="button" class="button is-info" onClick={this.handlesubmit}>Sign in</a>
                                                 </p>

@@ -1,8 +1,5 @@
 import decode from 'jwt-decode';
 
-// import FacebookLogin from 'react-facebook-login';
-
-
 export default class AuthService {
     constructor(domain) {
         this.domain = domain || 'http://localhost:8080' // API server domain
@@ -65,7 +62,6 @@ export default class AuthService {
     logout() {
         localStorage.removeItem('id_token')
         localStorage.removeItem('expires_at')
-        // facebookResponse = (e) => {};
     }
 
     getProfile() {

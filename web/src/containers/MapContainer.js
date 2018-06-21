@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
+
 class MapContainer extends Component {
     constructor() {
         super()
@@ -29,12 +30,10 @@ class MapContainer extends Component {
                 this.state.lng = imei.geometry.coordinates[0]
             }
         })
-        console.log('lat lng', this.state.lat,this.state.lng)
-        this.loadMap()
+        console.log('lat lng', this.state.lat,this.state.lng)       
     }
 
     loadMap(){
-        
         if (this.props && this.props.google){
             let mapshow = this.state.locations
 
@@ -56,10 +55,9 @@ class MapContainer extends Component {
                 new google.maps.Marker({
                     position: { lat: location.geometry.coordinates[1], lng: location.geometry.coordinates[0] },
                     map: this.map,
-                    title: location.IMEI // the title of the marker is set to the name of the location
+                    title: location.IMEI, // the title of the marker is set to the name of the location
                 });
             })
-
             // mapRef.addListener('click', function() {
             //   infowindow.open(mapshow, mapRef);
             // });

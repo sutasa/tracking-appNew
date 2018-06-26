@@ -9,11 +9,6 @@ class Home extends Component {
         return (
             <div>
                 {
-                    !isAuthenticated() && (
-                        <h2>กรุณา Login</h2>
-                    )
-                }
-                {
                     isAuthenticated() && (                
                         <div className="columns">
                             <div>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
-
-class MapContainer extends Component {
-    constructor() {
-        super()
+export default class MapContainer extends Component {
+    constructor(props) {
+        super(props)
         this.state = {
             locations: [],
-            lat: 13.736717,
-            lng: 100.523186
+            currentLocation: 
+            {
+                lat: 13.736717,
+                lng: 100.523186
+            }            
         }
     }
 
@@ -21,16 +23,36 @@ class MapContainer extends Component {
             });
     }
 
+    componentDidUpdate(prevProps, prevState) {
+            this.recenterMap();
+    }
+
     componentWillReceiveProps = (props) =>{
-        console.log('props',props.imei)
         this.state.locations.find((imei) => {
             if (imei.IMEI === props.imei) {
-                console.log("check lat lng",imei.geometry.coordinates[1], imei.geometry.coordinates[0])
-                this.state.lat = imei.geometry.coordinates[1]
-                this.state.lng = imei.geometry.coordinates[0]
+                this.state.currentLocation.lat = imei.geometry.coordinates[1]
+                this.state.currentLocation.lng = imei.geometry.coordinates[0]
             }
-        })
-        console.log('lat lng', this.state.lat,this.state.lng)       
+        })    
+    }
+
+    recenterMap() {
+        const map = this.map;
+    
+        const { google } = this.props;
+        const maps = google.maps;
+        // console.log(map)
+        if (map) {
+          let  center = this.state.currentLocation   //{lat :13.6516148 , lng: 100.4540369}; 
+          console.log(center)
+          if (!(center instanceof google.maps.LatLng)) {
+            center = {lat :13.8034081 , lng: 100.5521107}
+            console.log(center)
+         }
+       //   map.panTo(center)
+          map.setCenter(center);
+          maps.event.trigger(map, 'recenter');
+        }
     }
 
     loadMap(){
@@ -43,9 +65,9 @@ class MapContainer extends Component {
             const mapRef = this.refs.map;
             const node = ReactDOM.findDOMNode(mapRef);
             
-            const mapConfig = Object.assign({}, console.log("latlng2",this.state.lat,this.state.lng),
+            const mapConfig = Object.assign({},
             {
-                center: new google.maps.LatLng(this.state.lat,this.state.lng),//{ lat: this.state.lat, lng: this.state.lng },//
+                center: new google.maps.LatLng(this.state.currentLocation.lat ,this.state.currentLocation.lng),//{ lat: this.state.currentLocation.lat, lng: this.state.currentLocation.lng },
                 zoom: 11,
                 mapTypeId: 'roadmap'
             })
@@ -55,7 +77,7 @@ class MapContainer extends Component {
                 new google.maps.Marker({
                     position: { lat: location.geometry.coordinates[1], lng: location.geometry.coordinates[0] },
                     map: this.map,
-                    title: location.IMEI, // the title of the marker is set to the name of the location
+                    title: toString(location.IMEI), // the title of the marker is set to the name of the location
                 });
             })
             // mapRef.addListener('click', function() {
@@ -71,7 +93,7 @@ class MapContainer extends Component {
     render() {
         const style = {
             width: '100%',
-            height: '90%'
+            height: '100%'
         }
         return (
             <div ref="map" style={style}>
@@ -81,5 +103,5 @@ class MapContainer extends Component {
     }
 }
 
-export default MapContainer
+ 
 

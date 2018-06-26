@@ -37,8 +37,8 @@ class Login extends Component {
 
     render(){
         return(
-        <div className="columns">
-            <div className="column is-two-fifths is-offset-one-quarter">
+        <div className="columns is-centered">
+            <div className="column is-two-fifths ">
                 <div className="tile is-ancestor">
                     <div className="tile is-vertical is-12">
                         <div className="tile">
@@ -48,7 +48,7 @@ class Login extends Component {
                                         <div className="field">
                                             <label className="label">Email:</label>
                                             <p className="control has-icons-left has-icons-right">
-                                                <input name="email" type="email" class="input is-info" 
+                                                <input name="email" type="email" className="input is-info" 
                                                     placeholder="youremail@email.com" onChange={this.handlechange} />
                                                 <span className="icon is-small is-left">
                                                     <i className="fas fa-envelope"></i>
@@ -60,9 +60,9 @@ class Login extends Component {
                                         </div>
                                         <div className="field">
                                             <label className="label">Password:</label>
-                                            <p class="control has-icons-left">
-                                                <input name="password" type="password" class="input is-info" 
-                                                    placeholder="Password" onChange={this.handlechange}/> 
+                                            <p className="control has-icons-left">
+                                                <input name="password" type="password" className="input is-info" 
+                                                    placeholder="Password" onChange={this.handlechange} /> 
                                                 <span className="icon is-small is-left">
                                                     <i className="fas fa-lock"></i>
                                                 </span>
@@ -72,7 +72,7 @@ class Login extends Component {
                                             <p className="control">
                                                 <p className="level-item has-text-centered level-right">
                                                     <br/><br/>
-                                                    <a type="button" class="button is-info" onClick={this.handlesubmit}>Sign in</a>
+                                                    <a type="button" className="button is-info" onClick={this.handlesubmit}>Sign in</a>
                                                 </p>
                                             </p>
                                         </div>
